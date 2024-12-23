@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+  <!-- Direct script execution -->
+  <script>
+    alert('XSS via <script> in SVG');
+  </script>
+
+  <!-- Event-based XSS -->
+  <rect width="100" height="100" fill="red" onmouseover="alert('XSS via onmouseover')" />
+
+  <!-- External reference -->
+  <a xlink:href="javascript:alert('XSS via javascript URI')">
+    <text x="10" y="50" fill="blue">Click Me!</text>
+  </a>
+
+  <!-- Animation-based XSS -->
+  <animate attributeName="x" from="0" to="100" dur="5s" repeatCount="indefinite" 
+           onbegin="alert('XSS via <animate> onbegin event')" />
+
+  <!-- Inline script inside set -->
+  <set attributeName="x" to="100" onbegin="alert('XSS via <set> onbegin')" />
+</svg>
